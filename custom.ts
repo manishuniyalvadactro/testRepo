@@ -42,16 +42,17 @@ namespace Stemrobo {
     //% blockId=sonar_ping block="Read sonar in unit %unit"
     export function ping(unit: PingUnit, maxCmDistance = 500): number
         {
-            // send pulse
-            pins.setPull(2, PinPullMode.PullNone);
-            pins.digitalWritePin(2, 0);
+            let trigger = DigitalPin.P1;
+            let pecho = DigitalPin.P0;
+            pins.setPull(trigger, PinPullMode.PullNone);
+            pins.digitalWritePin(trigger, 0);
             control.waitMicros(2);
-            pins.digitalWritePin(2, 1);
+            pins.digitalWritePin(trigger, 1);
             control.waitMicros(10);
-            pins.digitalWritePin(2, 0);
+            pins.digitalWritePin(trigger, 0);
 
             // read pulse
-            const d = pins.pulseIn(1, PulseValue.High, maxCmDistance * 58);
+            const d = pins.pulseIn(pecho, PulseValue.High, maxCmDistance * 58);
 
             switch (unit)
             {
