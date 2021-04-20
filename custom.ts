@@ -43,7 +43,7 @@ namespace Stemrobo {
     export function ping(unit: PingUnit, maxCmDistance = 500): number
         {
             // send pulse
-            pins.setPull(4, PinPullMode.PullNone);
+            pins.setPull(2, PinPullMode.PullNone);
             pins.digitalWritePin(2, 0);
             control.waitMicros(2);
             pins.digitalWritePin(2, 1);
