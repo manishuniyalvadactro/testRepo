@@ -40,7 +40,7 @@ namespace Stemrobo {
      */
    
     //% blockId=sonar_ping block="Read sonar in unit %unit"
-    export function ping(trig: DigitalPin, echo: DigitalPin, unit: PingUnit, maxCmDistance = 500): number
+    export function ping(unit: PingUnit, maxCmDistance = 500): number
         {
             // send pulse
             pins.setPull(trig, PinPullMode.PullNone);
