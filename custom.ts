@@ -2,7 +2,7 @@
 /**
  * Stemrobo Icon
  */
-//% weight=280 color=#ffff00 icon="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.stemrobo.com%2Fcareers%2Fstem-innovation-engineer%2F&psig=AOvVaw1Y0Qhzfma7zXJ7z6MEZkwf&ust=1618985565870000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMiN8K6VjPACFQAAAAAdAAAAABAD"
+//% weight=280 color=#ffff00 icon="quarter note"
 namespace Stemrobo {
     /**
      * Blink an led
