@@ -2,7 +2,7 @@
 /**
  * Stemrobo Icon
  */
-//% weight=280 color=#ffff00 icon="\uf192"
+//% weight=280 color=#e6e600 icon="\uf192"
 namespace Stemrobo {
     /**
      * Blink an led
