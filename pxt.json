@@ -8,9 +8,7 @@
     },
     "files": [
         "README.md",
-        "custom.ts",
-        "main.py",
-        "main.ts"
+        "custom.ts"
     ],
     "testFiles": [
         "test.ts"

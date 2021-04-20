@@ -11,6 +11,7 @@ namespace Stemrobo {
      * @param interval time in milli second between blink    
      */
     //% block="blink x $x y $y every $interval ms"
+    //% block="blinkFast x $x y $y every $interval ms"
     export function blink(x: number, y: number, interval:number): void {
         let sprite = game.createSprite(x,y)
         sprite.setBlink(interval)
