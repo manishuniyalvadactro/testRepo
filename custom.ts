@@ -43,15 +43,15 @@ namespace Stemrobo {
     export function ping(unit: PingUnit, maxCmDistance = 500): number
         {
             // send pulse
-            pins.setPull(trig, PinPullMode.PullNone);
-            pins.digitalWritePin(trig, 0);
+            pins.setPull(4, PinPullMode.PullNone);
+            pins.digitalWritePin(2, 0);
             control.waitMicros(2);
-            pins.digitalWritePin(trig, 1);
+            pins.digitalWritePin(2, 1);
             control.waitMicros(10);
-            pins.digitalWritePin(trig, 0);
+            pins.digitalWritePin(2, 0);
 
             // read pulse
-            const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * 58);
+            const d = pins.pulseIn(1, PulseValue.High, maxCmDistance * 58);
 
             switch (unit)
             {
