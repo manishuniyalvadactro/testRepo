@@ -9,7 +9,7 @@ enum PingUnit {
 /**
  * Stemrobo Icon
  */
-//% weight=280 color=#e6e600 icon="\uf192"
+//% weight=280 color=#e6e600 icon="9748"
 namespace Stemrobo {
     /**
      * Blink an led
