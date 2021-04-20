@@ -16,7 +16,7 @@ namespace Stemrobo {
         sprite.setBlink(interval)
         sprite.blink()
     }
- export function blink(x: number, y: number, interval:number): void {
+ export function blinkFast(x: number, y: number, interval:number): void {
         let sprite = game.createSprite(x,y)
         sprite.setBlink(interval)
         sprite.blink()
