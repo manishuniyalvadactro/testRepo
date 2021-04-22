@@ -72,7 +72,7 @@ namespace Stemrobo {
         else
             return pins.digitalReadPin(DigitalPin.P13);
     } 
-    //% block="turn buzzer%flag"
+    //% block="Switch buzzer%flag"
     //% flag.shadow="toggleOnOff"
     export function stembuzzer(flag: boolean): void
     {
