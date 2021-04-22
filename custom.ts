@@ -73,9 +73,9 @@ namespace Stemrobo {
     export function readLine(sensor: IRSensor): number
     {
         if (sensor == IRSensor.Left)
-            return pins.digitalReadPin(DigitalPin.P11);
+            return pins.digitalReadPin(DigitalPin.P14);
         else
-            return pins.digitalReadPin(DigitalPin.P5);
+            return pins.digitalReadPin(DigitalPin.P13);
     } 
    
 }
