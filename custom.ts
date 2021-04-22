@@ -32,20 +32,7 @@ namespace Stemrobo {
         sprite.setBlink(interval)
         sprite.blink()
     }
-    /**
-     * Send a ping and get the echo time (in microseconds) as a result
-     * @param trig tigger pin
-     * @param echo echo pin
-     * @param unit desired conversion unit
-     * @param maxCmDistance maximum distance in centimeters (default is 500)
-     */
-    /**
-     * Send a ping and get the echo time (in microseconds) as a result
-     * @param trig tigger pin
-     * @param echo echo pin
-     * @param unit desired conversion unit
-     * @param maxCmDistance maximum distance in centimeters (default is 500)
-     */
+   
    
     //% block="Read sonar in unit %unit"
     export function ping(unit: PingUnit, maxCmDistance = 500): number
