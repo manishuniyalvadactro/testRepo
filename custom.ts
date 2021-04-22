@@ -6,6 +6,14 @@ enum PingUnit {
     //% block="inches"
     Inches
 }
+enum IRSensor
+{
+    //% block="left"
+    Left,
+    //% block="right"
+    Right
+}
+
 /**
  * Stemrobo Icon
  */
@@ -39,7 +47,7 @@ namespace Stemrobo {
      * @param maxCmDistance maximum distance in centimeters (default is 500)
      */
    
-    //% blockId=sonar_ping block="Read sonar in unit %unit"
+    //% block="Read sonar in unit %unit"
     export function ping(unit: PingUnit, maxCmDistance = 500): number
         {
             let trigger = DigitalPin.P1;
@@ -61,6 +69,13 @@ namespace Stemrobo {
                 default: return d ;
             }
         }
-            
+        //% block="%sensor|line sensor"
+    export function readLine(sensor: IRSensor): number
+    {
+        if (sensor == IRSensor.Left)
+            return pins.digitalReadPin(DigitalPin.P11);
+        else
+            return pins.digitalReadPin(DigitalPin.P5);
+    } 
    
 }
