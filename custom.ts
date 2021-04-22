@@ -13,6 +13,14 @@ enum IRSensor
     //% block="right"
     Right
 }
+enum StemBuzzer
+{
+    //% block="on"
+    On,
+    //% block="off"
+    Off
+}
+
 
 /**
  * Stemrobo Icon
@@ -64,5 +72,11 @@ namespace Stemrobo {
         else
             return pins.digitalReadPin(DigitalPin.P13);
     } 
+    //% block="turn buzzer%flag"
+    export function stembuzzer(flag: boolean): void
+    {
+        let buzz = flag ? 1 : 0;
+        pins.digitalWritePin(DigitalPin.P15, buzz);
+    }
    
 }
