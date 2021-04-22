@@ -79,5 +79,9 @@ namespace Stemrobo {
         let buzz = flag ? 1 : 0;
         pins.digitalWritePin(DigitalPin.P15, buzz);
     }
-   
+
+    export function readLight(): number
+    {
+        return pins.digitalReadPin(DigitalPin.P16);
+    }
 }
