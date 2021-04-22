@@ -79,7 +79,7 @@ namespace Stemrobo {
         let buzz = flag ? 1 : 0;
         pins.digitalWritePin(DigitalPin.P15, buzz);
     }
-    //% block= light sensor"
+    //% block= "light sensor"
     export function readLight(): number
     {
         return pins.digitalReadPin(DigitalPin.P16);
