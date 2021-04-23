@@ -40,15 +40,6 @@ enum StemMotor
  */
 //% weight=280 color=#e6e600 icon="\uf1b9"
 namespace Stemrobo {
-    //export function move(motor: number, direction: BBDirection, speed: number): void
-  /**export function Motor_rotate(m11:number, m12: number, m21:number,m22:number)
-    {
-    pins.digitalWritePin(20, m11);
-    pins.digitalWritePin(19, m12);
-    pins.digitalWritePin(12, m21);
-    pins.digitalWritePin(8, m22);
-    }*/
-
     /**
      * Blink an led
      * @param x horizontal led
@@ -62,8 +53,6 @@ namespace Stemrobo {
         sprite.setBlink(interval)
         sprite.blink()
     }
-   
-   
     //% block="Read sonar in unit %unit"
     export function ping(unit: PingUnit, maxCmDistance = 500): number
         {
