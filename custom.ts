@@ -20,13 +20,35 @@ enum StemBuzzer
     //% block="off"
     Off
 }
+enum StemMotor
+{
+    //% block="left"
+    Left,
+    //% block="right"
+    Right,
+    //% block="forward"
+    Forward, 
+    //% block="backward"
+    Backward,
+    //% block="stop"
+    Stop
 
+}
 
 /**
  * Stemrobo Icon
  */
 //% weight=280 color=#e6e600 icon="\uf1b9"
 namespace Stemrobo {
+    //export function move(motor: number, direction: BBDirection, speed: number): void
+  /**export function Motor_rotate(m11:number, m12: number, m21:number,m22:number)
+    {
+    pins.digitalWritePin(20, m11);
+    pins.digitalWritePin(19, m12);
+    pins.digitalWritePin(12, m21);
+    pins.digitalWritePin(8, m22);
+    }*/
+
     /**
      * Blink an led
      * @param x horizontal led
@@ -84,4 +106,47 @@ namespace Stemrobo {
     {
         return pins.digitalReadPin(DigitalPin.P16);
     }
+    //% block="Turn Motor%turn"
+     export function motor(turn: StemMotor): void
+    {
+        let leftMotor1 = DigitalPin.P20;
+        let leftMotor2 = DigitalPin.P19;
+        let rightMotor1 = DigitalPin.P12;
+        let rightMotor2 = DigitalPin.P8;
+        if (turn == StemMotor.Right)
+        {
+            pins.digitalWritePin(leftMotor1, 0);
+            pins.digitalWritePin(leftMotor2, 1);
+            pins.digitalWritePin(rightMotor1, 1);
+            pins.digitalWritePin(rightMotor2, 0);
+        }
+        else if (turn == StemMotor.Left)
+        {
+            pins.digitalWritePin(leftMotor1, 1);
+            pins.digitalWritePin(leftMotor2, 0);
+            pins.digitalWritePin(rightMotor1, 0);
+            pins.digitalWritePin(rightMotor2, 1);
+        }
+        else if (turn == StemMotor.Forward)
+        {
+            pins.digitalWritePin(leftMotor1, 1);
+            pins.digitalWritePin(leftMotor2, 0);
+            pins.digitalWritePin(rightMotor1, 1);
+            pins.digitalWritePin(rightMotor2, 0);
+        }
+        else if (turn == StemMotor.Backward)
+        {
+            pins.digitalWritePin(leftMotor1, 0);
+            pins.digitalWritePin(leftMotor2, 1);
+            pins.digitalWritePin(rightMotor1, 0);
+            pins.digitalWritePin(rightMotor2, 1);
+        }
+        else
+        {
+            pins.digitalWritePin(leftMotor1, 0);
+            pins.digitalWritePin(leftMotor2, 0);
+            pins.digitalWritePin(rightMotor1, 0);
+            pins.digitalWritePin(rightMotor2, 0);
+        }
+    } 
 }
