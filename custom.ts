@@ -98,8 +98,8 @@ namespace Stemrobo {
     //% block="Turn Motor%turn"
      export function motor(turn: StemMotor): void
     {
-        let leftMotor1 = DigitalPin.P20;
-        let leftMotor2 = DigitalPin.P19;
+        let leftMotor1 = 20;
+        let leftMotor2 = 19;
         let rightMotor1 = DigitalPin.P12;
         let rightMotor2 = DigitalPin.P8;
         if (turn == StemMotor.Right)
