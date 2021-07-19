@@ -49,7 +49,7 @@ let myMCP23017Address = ADDRESS.A20
 /**
  * Blocks
  */
-"//% weight=100 color=#0fbc12 icon="
+"//% weight=100 color=#ff5733 icon="
 namespace MCP23017 {
     //% block
     //% advanced = true
