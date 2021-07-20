@@ -57,7 +57,7 @@ namespace Stemrobo {
     export function ping(unit: PingUnit, maxCmDistance = 500): number
         {
             let trigger = DigitalPin.P1;
-            let pecho = DigitalPin.P0;
+            let pecho = DigitalPin.P2;
             pins.setPull(trigger, PinPullMode.PullNone);
             pins.digitalWritePin(trigger, 0);
             control.waitMicros(2);
