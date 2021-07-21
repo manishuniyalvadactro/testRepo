@@ -60,7 +60,7 @@ enum MOVE {
 /**
  * Custom blocks
  */
-//% weight=100 color=#0fbc11 icon="ïƒƒ"
+//% weight=100 color=blue icon="\uf21c"
 namespace Motor {
 
     export function setPortAsOutput(port: SET_PORT) {
