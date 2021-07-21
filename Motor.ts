@@ -61,7 +61,7 @@ enum MOVE {
  * Custom blocks
  */
 //% weight=100 color=#0fbc11 icon="ïƒƒ"
-namespace custom {
+namespace Motor {
 
     export function setPortAsOutput(port: SET_PORT) {
         pins.i2cWriteNumber(myMCP23017Address, port + 0x00, NumberFormat.UInt16BE)
