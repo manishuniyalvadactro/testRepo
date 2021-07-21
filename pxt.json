@@ -9,9 +9,9 @@
     "files": [
         "README.md",
         "custom.ts",
-        "MCP23017.ts",
         "main.py",
-        "main.ts"
+        "main.ts",
+        "Motor.ts"
     ],
     "testFiles": [
         "test.ts"
