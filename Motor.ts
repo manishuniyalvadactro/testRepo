@@ -60,7 +60,7 @@ enum MOVE {
 /**
 * Custom blocks
 */
-//% weight=100 color=blue icon="\uf21c"
+//% weight=100 color=blue icon="\uf1b9"
 namespace STEMROBO {
 
     export function setPortAsOutput(port: SET_PORT) {
