@@ -7,6 +7,13 @@
 let outputABuffer = 0;
 let outputBBuffer = 0;
 
+enum PIN {                     // pins
+    //% block=Sv5
+    Sv5 = 0,               //
+    //% block=Sv6
+    Sv6 = 1,                //
+}
+
 enum ADDRESS {                     // address for MCP23017 (configurable by tying pins 15,16,17 on the mcp23017 high or low)
     //% block=0x20
     A20 = 0x20,               //
@@ -96,6 +103,26 @@ namespace STEMROBO {
         setupSimplePulsingOnAddress(ADDRESS.A20);
         setPortAsOutput(SET_PORT.A);
     }
+    export function digitalRead(pin: PIN): number 
+    {
+        pins.i2cWriteNumber(32,
+            19,
+            NumberFormat.Int8BE,
+            false
+        )
+        if (pin == 0) {
+            return pins.i2cReadNumber(32, NumberFormat.Int8LE, false);
+        }
+        else {
+            if (pins.i2cReadNumber(32, NumberFormat.Int8LE, false) == 2) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        }
+    }
+
 
     //% block="move $dir"
     export function moveIt(dir: MOVE): void {
