@@ -103,27 +103,7 @@ namespace STEMROBO {
         setupSimplePulsingOnAddress(ADDRESS.A20);
         setPortAsOutput(SET_PORT.A);
     }
-    export function digitalRead(pin: PIN): number 
-    {
-        pins.i2cWriteNumber(32,
-            19,
-            NumberFormat.Int8BE,
-            false
-        )
-        if (pin == 0) {
-            return pins.i2cReadNumber(32, NumberFormat.Int8LE, false);
-        }
-        else {
-            if (pins.i2cReadNumber(32, NumberFormat.Int8LE, false) == 2) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        }
-    }
-
-
+   
     //% block="move $dir"
     export function moveIt(dir: MOVE): void {
         if (dir == 0) {
@@ -170,6 +150,26 @@ namespace STEMROBO {
             clearOutputA(4)
             clearOutputA(5)
             updateOutputA()
+        }
+    }
+    
+    //% block="digital read $pin"
+    export function digitalRead(pin: PIN): number {
+        pins.i2cWriteNumber(32,
+            19,
+            NumberFormat.Int8BE,
+            false
+        )
+        if (pin == 0) {
+            return pins.i2cReadNumber(32, NumberFormat.Int8LE, false);
+        }
+        else {
+            if (pins.i2cReadNumber(32, NumberFormat.Int8LE, false) == 2) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
         }
     }
 }
