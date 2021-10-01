@@ -63,6 +63,9 @@ enum MOVE {
     stop = 4,
 }
 
+let digitalReadWriteOutputABuffer = 0;
+
+let digitalReadWriteAddress = ADDRESS.A20
 
 /**
 * Custom blocks
@@ -169,6 +172,46 @@ namespace STEMROBO {
             }
             else {
                 return 0;
+            }
+        }
+    }
+    export function digitalReadWriteWriteNumberToPort(port: REG_PIO, value: number) {
+        pins.i2cWriteNumber(digitalReadWriteAddress, port + value, NumberFormat.UInt16BE)
+    }
+
+    export function digitalReadWriteSetOutputA(bit: number) {
+        digitalReadWriteOutputABuffer = digitalReadWriteOutputABuffer | (1 << bit)
+    }
+
+    export function digitalReadWriteClearOutputA(bit: number) {
+        let tempMask = 1 << bit
+        tempMask = tempMask ^ 0B11111111
+        digitalReadWriteOutputABuffer = digitalReadWriteOutputABuffer & tempMask
+    }
+
+    export function digitalReadWriteUpdateOutputA() {
+        digitalReadWriteWriteNumberToPort(4608, digitalReadWriteOutputABuffer)
+    }
+    
+    //% block="digital write $pin $onOff"
+    //% onOff.min=0 onOff.max=1
+    export function digitalWrite(pin: PIN, onOff: number): void {
+        if (pin == 0) {
+            if (onOff == 1) {
+                digitalReadWriteSetOutputA(6);
+                digitalReadWriteUpdateOutputA()
+            }
+            else {
+                digitalReadWriteClearOutputA(6);
+            }
+        }
+        else {
+            if (onOff == 1) {
+                digitalReadWriteSetOutputA(7);
+                digitalReadWriteUpdateOutputA()
+            }
+            else {
+                digitalReadWriteClearOutputA(7);
             }
         }
     }
