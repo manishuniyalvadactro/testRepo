@@ -170,31 +170,33 @@ namespace STEMROBO {
     //% block="digital write $pin $onOff"
     //% onOff.min=0 onOff.max=1
     export function digitalWrite(pin: PIN, onOff: number): void {
-        if (pin == 0) {
-            if (onOff == 1) {
-                setOutputA(6)
-                updateOutputA()
-                //digitalReadWriteSetOutputA(6);
-                // digitalReadWriteUpdateOutputA()
-            }
-            else {
-                clearOutputA(6)
-                updateOutputA()
-            }
-        }
-        else {
-            if (onOff == 1) {
-                setOutputA(7)
-                updateOutputA()
-               // digitalReadWriteSetOutputA(7);
-                // digitalReadWriteUpdateOutputA()
-            }
-            else {
-                clearOutputA(7)
-                updateOutputA()
-                //digitalReadWriteClearOutputA(7);
-            }
-        }
+        setOutputA(6);
+        updateOutputA();
+        // if (pin == 0) {
+        //     if (onOff == 1) {
+        //         setOutputA(6)
+        //         updateOutputA()
+        //         //digitalReadWriteSetOutputA(6);
+        //         // digitalReadWriteUpdateOutputA()
+        //     }
+        //     else {
+        //         clearOutputA(6)
+        //         updateOutputA()
+        //     }
+        // }
+        // else {
+        //     if (onOff == 1) {
+        //         setOutputA(7)
+        //         updateOutputA()
+        //        // digitalReadWriteSetOutputA(7);
+        //         // digitalReadWriteUpdateOutputA()
+        //     }
+        //     else {
+        //         clearOutputA(7)
+        //         updateOutputA()
+        //         //digitalReadWriteClearOutputA(7);
+        //     }
+        // }
     }
 }
 
