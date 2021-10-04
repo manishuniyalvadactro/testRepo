@@ -159,27 +159,28 @@ namespace STEMROBO {
     export function digitalRead(pin: PIN): number {
         pins.i2cWriteNumber(32, 18, NumberFormat.Int8BE)
         let read_pin = pins.i2cReadNumber(32, NumberFormat.Int8LE);
-        if (pin ==0)
-        {
-            if (read_pin >= 10) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        }
-        else if( pin ==1)
-        {
-            if (read_pin < -1) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        }
-        else{
-            return 0;
-        }   
+        return read_pin;
+        // if (pin ==0)
+        // {
+        //     if (read_pin >= 10) {
+        //         return 1;
+        //     }
+        //     else {
+        //         return 0;
+        //     }
+        // }
+        // else if( pin ==1)
+        // {
+        //     if (read_pin < -1) {
+        //         return 1;
+        //     }
+        //     else {
+        //         return 0;
+        //     }
+        // }
+        // else{
+        //     return 0;
+        // }   
     }
     //% block="light sensor $ldr"
     export function lightSensor(ldr: ldr): number {
