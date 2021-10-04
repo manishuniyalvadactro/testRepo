@@ -80,7 +80,7 @@ namespace STEMROBO {
     export function setupSimplePulsingOnAddress(address: ADDRESS) {
         myMCP23017Address = address
         setPortAsOutput(SET_PORT.A)
-        //setPortAsOutput(SET_PORT.B)
+        setPortAsOutput(SET_PORT.B)
     }
 
     export function setOutputA(bit: number) {
