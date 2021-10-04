@@ -80,7 +80,7 @@ namespace STEMROBO {
     export function setupSimplePulsingOnAddress(address: ADDRESS) {
         myMCP23017Address = address
         setPortAsOutput(SET_PORT.A)
-        setPortAsOutput(SET_PORT.B)
+        //setPortAsOutput(SET_PORT.B)
     }
 
     export function setOutputA(bit: number) {
@@ -106,7 +106,7 @@ namespace STEMROBO {
         setupSimplePulsingOnAddress(ADDRESS.A20);
         setPortAsOutput(SET_PORT.A);
     }
-   
+
     //% block="move $dir"
     export function moveIt(dir: MOVE): void {
         if (dir == 0) {
@@ -155,63 +155,43 @@ namespace STEMROBO {
             updateOutputA()
         }
     }
-    
+
     //% block="digital read $pin"
     export function digitalRead(pin: PIN): number {
-        pins.i2cWriteNumber(32,
-            19,
-            NumberFormat.Int8BE,
-            false
-        )
+        pins.i2cWriteNumber(32, 19, NumberFormat.Int8BE)
         if (pin == 0) {
-            return pins.i2cReadNumber(32, NumberFormat.Int8LE, false);
+            return pins.i2cReadNumber(32, NumberFormat.Int8LE);
+        }
+        else if (pins.i2cReadNumber(32, NumberFormat.Int8LE) == 2) {
+            return 1;
         }
         else {
-            if (pins.i2cReadNumber(32, NumberFormat.Int8LE, false) == 2) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
+            return 0;
         }
     }
-    export function digitalReadWriteWriteNumberToPort(port: REG_PIO, value: number) {
-        pins.i2cWriteNumber(digitalReadWriteAddress, port + value, NumberFormat.UInt16BE)
-    }
-
-    export function digitalReadWriteSetOutputA(bit: number) {
-        digitalReadWriteOutputABuffer = digitalReadWriteOutputABuffer | (1 << bit)
-    }
-
-    export function digitalReadWriteClearOutputA(bit: number) {
-        let tempMask = 1 << bit
-        tempMask = tempMask ^ 0B11111111
-        digitalReadWriteOutputABuffer = digitalReadWriteOutputABuffer & tempMask
-    }
-
-    export function digitalReadWriteUpdateOutputA() {
-        digitalReadWriteWriteNumberToPort(4608, digitalReadWriteOutputABuffer)
-    }
-    
+   
     //% block="digital write $pin $onOff"
     //% onOff.min=0 onOff.max=1
     export function digitalWrite(pin: PIN, onOff: number): void {
         if (pin == 0) {
             if (onOff == 1) {
-                digitalReadWriteSetOutputA(6);
-                digitalReadWriteUpdateOutputA()
+                setOutputA(6)
+                //digitalReadWriteSetOutputA(6);
+                // digitalReadWriteUpdateOutputA()
             }
             else {
-                digitalReadWriteClearOutputA(6);
+                clearOutputA(6)
             }
         }
         else {
             if (onOff == 1) {
-                digitalReadWriteSetOutputA(7);
-                digitalReadWriteUpdateOutputA()
+                setOutputA(7)
+               // digitalReadWriteSetOutputA(7);
+                // digitalReadWriteUpdateOutputA()
             }
             else {
-                digitalReadWriteClearOutputA(7);
+                clearOutputA(7)
+                //digitalReadWriteClearOutputA(7);
             }
         }
     }
