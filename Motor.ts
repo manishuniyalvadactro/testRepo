@@ -6,6 +6,10 @@
 
 let outputABuffer = 0;
 let outputBBuffer = 0;
+enum ldr {
+    left = 0,
+    right = 1
+}
 enum mode{
     Input = 0,
     Output = 1,
@@ -175,9 +179,32 @@ namespace STEMROBO {
         }
         else{
             return 0;
+        }   
+    }
+    //% block="light sensor $ldr"
+    export function lightSensor(ldr: ldr): number {
+        pins.i2cWriteNumber(32, 19, NumberFormat.Int8BE)
+       let ldrRead = pins.i2cReadNumber(32, NumberFormat.Int8LE);
+        if (ldr ==0){
+            if (ldrRead == 4 || ldrRead ==42) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        }
+        else if (ldr==1)
+        {
+            if (ldrRead == 8 || ldrRead ==82)  {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+
         }
         
-        
+        return pins.i2cReadNumber(32, NumberFormat.Int8LE);
     }
    
     //% block="digital write $pin $onOff"
