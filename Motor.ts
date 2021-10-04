@@ -141,7 +141,6 @@ namespace STEMROBO {
     //% block="digital read $pin"
     export function digitalRead(pin: PIN): number {
         pins.i2cWriteNumber(32, 18, NumberFormat.Int8BE)
-       // return pins.i2cReadNumber(32, NumberFormat.Int8LE);
         let read_pin = pins.i2cReadNumber(32, NumberFormat.Int8LE);
         if (pin ==0)
         {
@@ -174,21 +173,25 @@ namespace STEMROBO {
         if (pin == 0) {
             if (onOff == 1) {
                 setOutputA(6)
+                updateOutputA()
                 //digitalReadWriteSetOutputA(6);
                 // digitalReadWriteUpdateOutputA()
             }
             else {
                 clearOutputA(6)
+                updateOutputA()
             }
         }
         else {
             if (onOff == 1) {
                 setOutputA(7)
+                updateOutputA()
                // digitalReadWriteSetOutputA(7);
                 // digitalReadWriteUpdateOutputA()
             }
             else {
                 clearOutputA(7)
+                updateOutputA()
                 //digitalReadWriteClearOutputA(7);
             }
         }
