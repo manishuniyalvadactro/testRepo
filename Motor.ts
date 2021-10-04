@@ -143,13 +143,28 @@ namespace STEMROBO {
         pins.i2cWriteNumber(32, 18, NumberFormat.Int8BE)
        // return pins.i2cReadNumber(32, NumberFormat.Int8LE);
         let read_pin = pins.i2cReadNumber(32, NumberFormat.Int8LE);
-        if (read_pin >= 10 || read_pin < -1)
+        if (pin ==0)
         {
-            return 1;
+            if (read_pin >= 10) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        }
+        else if( pin ==1)
+        {
+            if (read_pin < -1) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
         }
         else{
             return 0;
         }
+        
         
     }
    
