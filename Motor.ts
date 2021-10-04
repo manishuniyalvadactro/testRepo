@@ -7,8 +7,8 @@
 let outputABuffer = 0;
 let outputBBuffer = 0;
 enum mode{
-    Input = "in",
-    Output = "out"
+    Input = 0,
+    Output = 1,
 }
 enum PIN {                     // pins
     //% block=Sv5
@@ -93,7 +93,7 @@ namespace STEMROBO {
     }
     //% block="Set pinMode $mode"
     export function setPinMode(mode: mode): void {
-        if (mode == 'out')
+        if (mode == 1)
         {
             setupSimplePulsingOnAddress(ADDRESS.A20);
             setPortAsOutput(SET_PORT.A);
