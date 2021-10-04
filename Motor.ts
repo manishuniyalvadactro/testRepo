@@ -189,6 +189,9 @@ namespace STEMROBO {
             if (ldrRead == 4 || ldrRead ==42) {
                 return 1;
             }
+            else if (ldrRead == 12) {
+                return 1;
+            }
             else {
                 return 0;
             }
@@ -198,10 +201,16 @@ namespace STEMROBO {
             if (ldrRead == 8 || ldrRead ==82)  {
                 return 1;
             }
-            else {
+            else if (ldrRead == 12) {
+                return 1;
+            }
+            else{
                 return 0;
             }
 
+        }
+        else{
+            return 0;
         }
         
         return pins.i2cReadNumber(32, NumberFormat.Int8LE);
