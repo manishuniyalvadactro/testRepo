@@ -6,7 +6,10 @@
 
 let outputABuffer = 0;
 let outputBBuffer = 0;
-
+enum mode{
+    Input = "in",
+    Output = "out"
+}
 enum PIN {                     // pins
     //% block=Sv5
     Sv5 = 0,               //
@@ -88,6 +91,16 @@ namespace STEMROBO {
         setupSimplePulsingOnAddress(ADDRESS.A20);
         setPortAsOutput(SET_PORT.A);
     }
+    //% block="Set pinMode $mode"
+    export function setPinMode(mode: mode): void {
+        if (mode == 'out')
+        {
+            setupSimplePulsingOnAddress(ADDRESS.A20);
+            setPortAsOutput(SET_PORT.A);
+        }
+        
+    }
+
 
     //% block="move $dir"
     export function moveIt(dir: MOVE): void {
@@ -170,33 +183,28 @@ namespace STEMROBO {
     //% block="digital write $pin $onOff"
     //% onOff.min=0 onOff.max=1
     export function digitalWrite(pin: PIN, onOff: number): void {
-        setOutputA(6);
-        updateOutputA();
-        // if (pin == 0) {
-        //     if (onOff == 1) {
-        //         setOutputA(6)
-        //         updateOutputA()
-        //         //digitalReadWriteSetOutputA(6);
-        //         // digitalReadWriteUpdateOutputA()
-        //     }
-        //     else {
-        //         clearOutputA(6)
-        //         updateOutputA()
-        //     }
-        // }
-        // else {
-        //     if (onOff == 1) {
-        //         setOutputA(7)
-        //         updateOutputA()
-        //        // digitalReadWriteSetOutputA(7);
-        //         // digitalReadWriteUpdateOutputA()
-        //     }
-        //     else {
-        //         clearOutputA(7)
-        //         updateOutputA()
-        //         //digitalReadWriteClearOutputA(7);
-        //     }
-        // }
+        
+        if (pin == 0) {
+            if (onOff == 1) {
+                setOutputA(6)
+                updateOutputA()
+            }
+            else {
+                clearOutputA(6)
+                updateOutputA()
+            }
+        }
+        else {
+            if (onOff == 1) {
+                setOutputA(7)
+                updateOutputA()
+            }
+            else {
+                clearOutputA(7)
+                updateOutputA()
+                
+            }
+        }
     }
 }
 
