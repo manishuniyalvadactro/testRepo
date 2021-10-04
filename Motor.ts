@@ -17,20 +17,7 @@ enum PIN {                     // pins
 enum ADDRESS {                     // address for MCP23017 (configurable by tying pins 15,16,17 on the mcp23017 high or low)
     //% block=0x20
     A20 = 0x20,               //
-    //% block=0x21
-    A21 = 0x21,                //
-    //% block=0x22
-    A22 = 0x22,                //
-    //% block=0x23
-    A23 = 0x23,                //
-    //% block=0x24
-    A24 = 0x24,                //
-    //% block=0x25
-    A25 = 0x25,                //
-    //% block=0x26
-    A26 = 0x26,                //
-    //% block=0x27
-    A27 = 0x27                //
+   
 }
 
 let myMCP23017Address = ADDRESS.A20
@@ -63,10 +50,6 @@ enum MOVE {
     stop = 4,
 }
 
-let digitalReadWriteOutputABuffer = 0;
-
-let digitalReadWriteAddress = ADDRESS.A20
-
 /**
 * Custom blocks
 */
@@ -76,11 +59,10 @@ namespace STEMROBO {
     export function setPortAsOutput(port: SET_PORT) {
         pins.i2cWriteNumber(myMCP23017Address, port + 0x00, NumberFormat.UInt16BE)
     }
-
     export function setupSimplePulsingOnAddress(address: ADDRESS) {
         myMCP23017Address = address
         setPortAsOutput(SET_PORT.A)
-        setPortAsOutput(SET_PORT.B)
+        // setPortAsOutput(SET_PORT.B)
     }
 
     export function setOutputA(bit: number) {
@@ -159,6 +141,13 @@ namespace STEMROBO {
     //% block="digital read $pin"
     export function digitalRead(pin: PIN): number {
         pins.i2cWriteNumber(32, 19, NumberFormat.Int8BE)
+        if (pins.i2cReadNumber(32, NumberFormat.Int8LE) >= 100)
+        {
+            return 1;
+        }
+        else{
+            return 0;
+        }
         // if (pin == 0) {
         return pins.i2cReadNumber(32, NumberFormat.Int8LE);
         // }
