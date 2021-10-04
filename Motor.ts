@@ -159,7 +159,7 @@ namespace STEMROBO {
     export function digitalRead(pin: PIN): number {
         pins.i2cWriteNumber(32, 18, NumberFormat.Int8BE)
         let read_pin = pins.i2cReadNumber(32, NumberFormat.Int8LE);
-        return read_pin;
+        return pins.i2cReadNumber(32, NumberFormat.Int8LE);
         // if (pin ==0)
         // {
         //     if (read_pin >= 10) {
