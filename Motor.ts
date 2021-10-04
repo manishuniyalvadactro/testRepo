@@ -141,13 +141,14 @@ namespace STEMROBO {
     //% block="digital read $pin"
     export function digitalRead(pin: PIN): number {
         pins.i2cWriteNumber(32, 18, NumberFormat.Int8BE)
-        if (pins.i2cReadNumber(32, NumberFormat.Int8LE) >= 100)
-        {
-            return 1;
-        }
-        else{
-            return 0;
-        }
+        return pins.i2cReadNumber(32, NumberFormat.Int8LE);
+        // if (pins.i2cReadNumber(32, NumberFormat.Int8LE) >= 100)
+        // {
+        //     return 1;
+        // }
+        // else{
+        //     return 0;
+        // }
         
     }
    
