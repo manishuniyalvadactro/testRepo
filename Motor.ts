@@ -100,7 +100,7 @@ namespace STEMROBO {
         if (mode == 1)
         {
             setupSimplePulsingOnAddress(ADDRESS.A20);
-            setPortAsOutput(SET_PORT.A);
+            //setPortAsOutput(SET_PORT.A);
         }
         
     }
