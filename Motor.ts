@@ -93,7 +93,7 @@ namespace STEMROBO {
     //% block="start motor"
     export function setup(): void {
         setupSimplePulsingOnAddress(ADDRESS.A20);
-        setPortAsOutput(SET_PORT.A);
+        //setPortAsOutput(SET_PORT.A);
     }
     //% block="Set pinMode $mode"
     export function setPinMode(mode: mode): void {
