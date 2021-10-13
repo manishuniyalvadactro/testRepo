@@ -230,7 +230,7 @@ namespace STEMROBO {
     //% block="light sensor $ldr"
     export function lightSensor(ldr: ldr): number {
         pins.i2cWriteNumber(32, 19, NumberFormat.Int8BE)
-        let ldrRead = pins.i2cReadNumber(32, NumberFormat.Int8LE);
+       //let ldrRead = pins.i2cReadNumber(32, NumberFormat.Int8LE);
         // if (ldr ==0){
         //     if (ldrRead == 4 || ldrRead ==42) {
         //         return 1;
