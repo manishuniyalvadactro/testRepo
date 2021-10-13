@@ -10,6 +10,13 @@ enum ldr {
     left = 0,
     right = 1
 }
+enum IRSensor {
+    //% block="left"
+    Left,
+    //% block="right"
+    Right
+}
+
 enum PingUnit {
     //% block="μs"
     MicroSeconds,
@@ -113,6 +120,15 @@ namespace STEMROBO {
         }
         
     }
+
+    //% block="%sensor|line sensor"
+    export function readLine(sensor: IRSensor): number {
+        if (sensor == IRSensor.Left)
+            return pins.digitalReadPin(DigitalPin.P14);
+        else
+            return pins.digitalReadPin(DigitalPin.P13);
+    }
+
     //% block="Read sonar in unit %unit"
     export function ping(unit: PingUnit, maxCmDistance = 500): number {
         let trigger = DigitalPin.P1;
