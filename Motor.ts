@@ -10,6 +10,15 @@ enum ldr {
     left = 0,
     right = 1
 }
+enum PingUnit {
+    //% block="μs"
+    MicroSeconds,
+    //% block="cm"
+    Centimeters,
+    //% block="inches"
+    Inches
+}
+
 enum mode{
     Input = 0,
     Output = 1,
@@ -104,6 +113,27 @@ namespace STEMROBO {
         }
         
     }
+    //% block="Read sonar in unit %unit"
+    export function ping(unit: PingUnit, maxCmDistance = 500): number {
+        let trigger = DigitalPin.P1;
+        let pecho = DigitalPin.P2;
+        pins.setPull(trigger, PinPullMode.PullNone);
+        pins.digitalWritePin(trigger, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(trigger, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(trigger, 0);
+
+        // read pulse
+        const d = pins.pulseIn(pecho, PulseValue.High, maxCmDistance * 58);
+
+        switch (unit) {
+            case PingUnit.Centimeters: return Math.idiv(d, 58);
+            case PingUnit.Inches: return Math.idiv(d, 148);
+            default: return d;
+        }
+    }
+
 
 
     //% block="move $dir"
