@@ -259,7 +259,7 @@ namespace STEMROBO {
             return 0;
         }
         
-        return pins.i2cReadNumber(32, NumberFormat.Int8LE);
+        //return pins.i2cReadNumber(32, NumberFormat.Int8LE);
     }
    
     //% block="digital write $pin $onOff"
